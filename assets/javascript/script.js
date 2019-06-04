@@ -62,10 +62,32 @@ database.ref().on("child_added", function(childSnapshot) {
     console.log("First Train Time: " + trainTime);
     console.log("Frequency: " + trainFrequency);
 
+
     // Calculate when next train will arrive relative to current time
     var currentTime = moment();
     console.log("Current Time: " + currentTime);
 
+    var firstTimeConverted = moment(trainTime, "HH:mm").subtract(1, "years");
+    console.log("Time Converted: " + firstTimeConverted);
 
+    // Difference between the times
+    var timeDifference = moment().diff(moment(firstTimeConverted), "minutes");
+    console.log("Time Difference: " + timeDifference);
+
+    // Time remainder
+    var timeRemainder = timeDifference % trainFrequency;
+    console.log("Time Remainder: " + timeRemainder);
+
+    // Minutes until next train arrival
+    var minutes = trainFrequency - timeRemainder;
+    console.log("Minutes until next train: " + minutes);
+
+    // Next train arrival
+    var nextArrival = moment().add(minutes, "minutes");
+    console.log("Arrival time: " + moment(nextArrival).format("HH:mm"));
+    var formattedTime = moment(nextArrival).format("HH:mm");
+
+    // Add each train to the table
+    $("#train-table > tbody").append("<tr><td>" + trainName + "</td><td>" + trainDestination + "</td><td>" + trainFrequency + "</td><td>" + formattedTime + "</td><td>" + minutes + "</td>");
 
 });

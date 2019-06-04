@@ -1,8 +1,32 @@
 body {
-    font-family: Verdana, Tahoma, sans-serif
+    font-family: Verdana, Tahoma, sans-serif;
+    font-size: 10px;
+    background-color: #41474B;
+    margin: 0;
+    padding: 0;
 }
 
 .main-container {
     margin: 0 auto;
-    width: 90%;
+    width: 80%;
+}
+
+.jumbotron {
+    background: #AD7B53;
+    color: #FAFAFA;
+    text-align: center;
+}
+
+.card-header {
+    background: #AD7B53;
+    color: #FAFAFA;
+}
+
+.btn-primary {
+    background: #AB7B4D;
+}
+
+.btn-primary:hover {
+    background: #FAFAFA;
+    color: #000000;
 }
